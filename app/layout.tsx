@@ -1,35 +1,39 @@
-import { cn } from "@/lib/utils";
-import { Inter } from "next/font/google";
-// import { Toaster } from "sonner";
-import "./globals.css";
-import { IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
+import "./globals.css"
 
-const spaceGroteskHeading = Space_Grotesk({subsets:['latin'],variable:'--font-heading'});
+import { ThemeProvider } from "@/components/shared/theme-provider"
+import type { Viewport } from "next"
 
-const ibmPlexSans = IBM_Plex_Sans({subsets:['latin'],variable:'--font-sans'});
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "white",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: "black",
+    },
+  ],
+}
 
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-
   return (
-    <html lang="en"
-      className={cn("h-full antialiased", inter.variable, "font-sans", ibmPlexSans.variable, spaceGroteskHeading.variable)}
-    >
-      <body className="min-h-full flex flex-col">
-
-        {/* <Toaster position="top-right" richColors /> */}
-        {/* Navbar */}
-        {children}
-
-        {/* Footer */}
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
