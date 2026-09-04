@@ -93,7 +93,7 @@ export function Navbar({ user }: NavbarProps) {
     if (!user.success) return
 
     if (action === "dashboard") {
-      const role = user.data.profile.role
+      const role = user.data.role
       if (role === "CUSTOMER") {
         router.push("/dashboard")
       } else if (role === "TECHNICIAN") {
@@ -121,8 +121,6 @@ export function Navbar({ user }: NavbarProps) {
     }
   }
 
-  const profile = user.success ? user.data.profile : null
-
   return (
     <nav className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -148,7 +146,7 @@ export function Navbar({ user }: NavbarProps) {
 
           {/* Desktop user menu / login */}
           <div className="hidden lg:block">
-            {profile ? (
+            {user.success ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -158,8 +156,8 @@ export function Navbar({ user }: NavbarProps) {
                     aria-label="Open user menu"
                   >
                     <Avatar className="size-9">
-                      <AvatarImage src={profile.avatarUrl || "/placeholder.svg"} alt="" />
-                      <AvatarFallback>{initials(profile.name)}</AvatarFallback>
+                      <AvatarImage src={user.data.avatarUrl || "/placeholder.svg"} alt="" />
+                      <AvatarFallback>{initials(user.data.name)}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
@@ -168,10 +166,10 @@ export function Navbar({ user }: NavbarProps) {
                     <DropdownMenuLabel>
                       <div className="flex flex-col gap-0.5">
                         <span className="truncate text-sm font-medium text-foreground">
-                          {profile.name}
+                          {user.data.name}
                         </span>
                         <span className="truncate text-xs font-normal text-muted-foreground">
-                          {profile.email}
+                          {user.data.email}
                         </span>
                       </div>
                     </DropdownMenuLabel>
@@ -246,22 +244,22 @@ export function Navbar({ user }: NavbarProps) {
               <Separator />
 
               <div className="mt-auto flex flex-col gap-3 p-4">
-                {profile ? (
+                {user.success ? (
                   <>
                     <div className="flex items-center gap-3">
                       <Avatar className="size-10">
                         <AvatarImage
-                          src={profile.avatarUrl || "/placeholder.svg"}
+                          src={user.data.avatarUrl || "/placeholder.svg"}
                           alt=""
                         />
-                        <AvatarFallback>{initials(profile.name)}</AvatarFallback>
+                        <AvatarFallback>{initials(user.data.name)}</AvatarFallback>
                       </Avatar>
                       <div className="flex min-w-0 flex-col">
                         <span className="truncate text-sm font-medium text-foreground">
-                          {profile.name}
+                          {user.data.name}
                         </span>
                         <span className="truncate text-xs text-muted-foreground">
-                          {profile.email}
+                          {user.data.email}
                         </span>
                       </div>
                     </div>

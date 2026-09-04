@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/shared/navbar";
+import { getMe } from "@/service/getMe";
 
 
 const DashboardLayout = async (
@@ -9,9 +10,10 @@ const DashboardLayout = async (
     }
 ) => {
  
+    const user = await getMe();
     return (
         <div className="min-h-screen flex flex-col">
-            <Navbar user={{ success: true, data: { profile: { name: "John Doe", email: "john@example.com", role: "CUSTOMER" } } }} />
+            <Navbar user={user} />
             {children}
         </div>
     );

@@ -2,6 +2,7 @@ import "./globals.css"
 
 import { ThemeProvider } from "@/components/shared/theme-provider"
 import type { Viewport } from "next"
+import { Toaster } from "sonner"
 
 export const viewport: Viewport = {
   colorScheme: "light dark",
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <Toaster position="top-right" richColors />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

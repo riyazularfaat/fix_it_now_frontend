@@ -1,7 +1,13 @@
 "use server";
 
-// Replace with real session/cookie invalidation logic (e.g. Better Auth, Supabase, etc.)
-export async function logout() {
-  // e.g. await auth.api.signOut(...)
-  return { success: true };
-}
+import { revalidateTag } from "next/cache";
+import { cookies } from "next/headers";
+
+export const logout = async () => {
+  const cookieStore = await cookies();
+
+  cookieStore.delete("accessToken");
+  cookieStore.delete("refreshToken");
+
+  revalidateTag("my-profile", "max");
+};

@@ -1,11 +1,8 @@
-
-import { Navbar } from "@/components/shared/navbar"
 import { Button } from "@/components/ui/button"
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className="flex min-h-svh flex-col font-sans">
-      <Navbar user={{ success: true, data: { profile: { name: "John Doe", email: "john@example.com", role: "CUSTOMER" } } }} />
       <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center gap-6 px-4 py-24 text-center sm:px-6 lg:px-8">
         <span className="rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
           Your Trusted Home Service Platform
