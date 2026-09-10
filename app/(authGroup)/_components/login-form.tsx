@@ -128,14 +128,6 @@ export function LoginForm() {
                 </Field>
 
                 <Field data-invalid={!!errors.password || undefined}>
-                    <div className="flex justify-end">
-                        <Link
-                            href="/forgot-password"
-                            className="text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
-                        >
-                            Forgot password?
-                        </Link>
-                    </div>
                     <LegendField>
                         <LegendFieldLegend>Password</LegendFieldLegend>
                         <LegendFieldInput
@@ -158,14 +150,22 @@ export function LoginForm() {
                         </InputGroupAddon>
                     </LegendField>
                     <FieldError>{errors.password}</FieldError>
+                    <div className="flex justify-end">
+                        <Link
+                            href="/forgot-password"
+                            className="text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+                        >
+                            Forgot password?
+                        </Link>
+                    </div>
                 </Field>
 
-                <Field orientation="horizontal">
+                {/* <Field orientation="horizontal">
                     <Checkbox id="remember" name="remember" />
                     <FieldLabel htmlFor="remember" className="font-normal">
                         Remember me for 30 days
                     </FieldLabel>
-                </Field>
+                </Field> */}
 
                 <Field>
                     <Button type="submit" disabled={pending}>
