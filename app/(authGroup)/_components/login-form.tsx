@@ -30,48 +30,7 @@ export function LoginForm() {
     const [showPassword, setShowPassword] = React.useState(false)
     const [errors, setErrors] = React.useState<FormErrors>({})
     const nextErrors: FormErrors = {}
-    // if (!email) {
-    //     nextErrors.email = "Email is required."
-    // } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    //     nextErrors.email = "Enter a valid email address."
-    // }
-    // if (!password) {
-    //     nextErrors.password = "Password is required."
-    // }
-    // setErrors(nextErrors)
-    // if (Object.keys(nextErrors).length > 0) return
-
-    // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault()
-
-    //     const formData = new FormData(event.currentTarget)
-    //     const email = String(formData.get("email") ?? "").trim()
-    //     const password = String(formData.get("password") ?? "")
-
-    //     // const nextErrors: FormErrors = {}
-    //     // if (!email) {
-    //     //     nextErrors.email = "Email is required."
-    //     // } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    //     //     nextErrors.email = "Enter a valid email address."
-    //     // }
-    //     // if (!password) {
-    //     //     nextErrors.password = "Password is required."
-    //     // }
-
-    //     // setErrors(nextErrors)
-    //     // if (Object.keys(nextErrors).length > 0) return
-
-    //     // startTransition(async () => {
-    //     //     const result = await loginAction({ email, password })
-    //     //     if (!result.success) {
-    //     //         setErrors({ form: result.error })
-    //     //         return
-    //     //     }
-    //     //     toast.success("Welcome back!")
-    //     //     router.push("/dashboard")
-    //     // })
-    // }
-
+    
     const searchParams = useSearchParams();
     const redirectTo = searchParams.get("redirectTo") ?? "";
     const [state, action, pending] = useActionState(loginAction.bind(null, redirectTo), false);
