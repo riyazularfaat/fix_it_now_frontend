@@ -152,7 +152,7 @@ export function Navbar({ user }: NavbarProps) {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full"
+                    className="rounded-full hover:cursor-pointer"
                     aria-label="Open user menu"
                   >
                     <Avatar className="size-9">

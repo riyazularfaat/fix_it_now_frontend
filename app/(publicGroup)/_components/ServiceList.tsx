@@ -1,7 +1,8 @@
 import { Empty, EmptyDescription, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
-import { getServices } from "../_actions/serviceAction";
+// import { getServices } from "../_actions/serviceAction";
 import { SearchX } from "lucide-react";
 import { ServiceCard } from "./ServicesCard";
+import { getServices } from "../_actions/publicActions";
 
 export async function ServiceList() {
     const services = await getServices();

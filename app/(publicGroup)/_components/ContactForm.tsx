@@ -166,7 +166,7 @@ export function ContactForm() {
                 </Field>
 
                 <Field>
-                    <Button type="submit" disabled={pending}>
+                    <Button type="submit" className="hover:cursor-pointer" disabled={pending}>
                         {pending && <Loader2 className="animate-spin" data-icon="inline-start" />}
                         {pending ? "Sending..." : "Send message"}
                     </Button>
